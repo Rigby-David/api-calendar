@@ -12,7 +12,6 @@ it('#POST connects to server', async () => {
 });
 it('#GET returns first row from quotes table', async () => {
   const res = await request(app).get('/quotes');
-  console.log('res', res);
   expect(res.status).toBe(200);
   expect(res.body.length).toEqual(2);
   expect(res.body[0]).toEqual({
@@ -22,7 +21,16 @@ it('#GET returns first row from quotes table', async () => {
     quote: expect.any(String),
   });
 });
-it.only('#GET return all rows from quotes table', async () => {
+it('#GET return all rows from quotes table', async () => {
   const res = await request(app).get('/quotes');
   expect(res.body.length).toEqual(2);
+});
+it.only('#GET returns one row by ID', async () => {
+  const res = await request(app).get('/quotes/id');
+  expect(res.body).toEqual({
+    id: 3,
+    film: 'Die Hard',
+    author: 'Hans Gruber',
+    quote: 'Good bye',
+  });
 });
