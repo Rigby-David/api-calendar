@@ -10,7 +10,7 @@ it('#POST connects to server', async () => {
   const res = await request(app).post('/quotes');
   expect(res.status).toBe(200);
 });
-it.only('#GET returns all rows from quotes table', async () => {
+it('#GET returns first row from quotes table', async () => {
   const res = await request(app).get('/quotes');
   console.log('res', res);
   expect(res.status).toBe(200);
@@ -21,4 +21,8 @@ it.only('#GET returns all rows from quotes table', async () => {
     author: expect.any(String),
     quote: expect.any(String),
   });
+});
+it.only('#GET return all rows from quotes table', async () => {
+  const res = await request(app).get('/quotes');
+  expect(res.body.length).toEqual(2);
 });
