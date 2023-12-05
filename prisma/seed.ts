@@ -1,10 +1,5 @@
+import { Quote } from '../src/types';
 import { prisma } from '../src/utils/db.server';
-
-interface Quote {
-  film: string;
-  author: string;
-  quote: string;
-}
 
 async function seed() {
   await Promise.all(

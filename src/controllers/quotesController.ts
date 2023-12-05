@@ -1,7 +1,11 @@
 import { Request, Response, Router } from 'express';
+import QuotesService from '../services/QuotesService';
 
-export default Router().post('/', async (req: Request, res: Response) => {
+export default Router().get('/', async (req: Request, res: Response) => {
   try {
-    res.json();
-  } catch (error) {}
+    const data = await QuotesService.getAllQuotes();
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+  }
 });
