@@ -7,4 +7,13 @@ export default class QuotesService {
     const quotes = await prisma.quotes.findMany();
     return quotes;
   }
+
+  static async getQuoteById(id: number): Promise<QuoteSelect | null> {
+    const quoteById = await prisma.quotes.findUnique({
+      where: {
+        id,
+      },
+    });
+    return quoteById;
+  }
 }

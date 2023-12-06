@@ -26,7 +26,7 @@ it('#GET return all rows from quotes table', async () => {
   expect(res.body.length).toEqual(2);
 });
 it.only('#GET returns one row by ID', async () => {
-  const res = await request(app).get('/quotes/id');
+  const res = await request(app).get('/quotes/3');
   expect(res.body).toEqual({
     id: 3,
     film: 'Die Hard',
