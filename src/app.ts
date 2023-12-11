@@ -3,6 +3,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import quotesController from './controllers/quotesController';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+app.use('/quotes', quotesController);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
